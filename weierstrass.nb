@@ -1,0 +1,390 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12792,        382]
+NotebookOptionsPosition[     11864,        348]
+NotebookOutlinePosition[     12217,        364]
+CellTagsIndexPosition[     12174,        361]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Firstly, find the Weierstrass Invariants that correspond to periods \[Pi] and \
+\[ImaginaryI]\[Pi]\
+\>", "Text",
+ CellChangeTimes->{{3.67551296185261*^9, 3.67551304524677*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetPrecision", "[", 
+  RowBox[{
+   RowBox[{"N", "[", 
+    RowBox[{"WeierstrassInvariants", "[", 
+     RowBox[{"{", 
+      RowBox[{"Pi", ",", 
+       RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}], "]"}], ",", "18"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.675512619812364*^9, 3.6755126915222683`*^9}, {
+  3.6755128902433567`*^9, 3.675512948651587*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.12131357435572592828876281600969377905`18.15051499783199", ",", 
+   "2.2447520574883807193241448090979104007194`18.150514997831987*^-18"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.675512683750102*^9, 3.6755126917574263`*^9}, {
+  3.675512900325645*^9, 3.6755129491396427`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Evaluate at  a  ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"-", "\[Pi]"}], ",", "\[Pi]"}], "]"}], "2"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " grid with spacing 0.02"
+}], "Text",
+ CellChangeTimes->{{3.6755139218270187`*^9, 3.675513963683011*^9}, {
+  3.675514027509225*^9, 3.6755140644043217`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wFunGrid", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"N", "[", 
+      RowBox[{"Re", "[", 
+       RowBox[{"WeierstrassP", "[", 
+        RowBox[{
+         RowBox[{"x", "+", 
+          RowBox[{"I", " ", "y"}]}], ",", 
+         RowBox[{"WeierstrassInvariants", "[", 
+          RowBox[{"{", 
+           RowBox[{"Pi", ",", 
+            RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}]}], "]"}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "Pi"}], ",", "Pi", ",", "0.02"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "Pi"}], ",", "Pi", ",", "0.02"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.6755127166050577`*^9, 3.675512795110405*^9}, {
+  3.6755130592894917`*^9, 3.675513182364452*^9}, {3.6755132143337793`*^9, 
+  3.675513465391779*^9}, {3.675513506598609*^9, 3.675513514991309*^9}, {
+  3.67551367837773*^9, 3.6755137112258263`*^9}, {3.675513872051537*^9, 
+  3.67551388497908*^9}, {3.675514095728798*^9, 3.675514097904108*^9}, {
+  3.6755141692722263`*^9, 3.675514170334352*^9}, {3.675515922782619*^9, 
+  3.675515926435877*^9}}],
+
+Cell["Find its derivatives", "Text",
+ CellChangeTimes->{{3.67551446479587*^9, 3.675514469082292*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"wxFunGrid", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"N", "[", 
+      RowBox[{"Re", "[", 
+       RowBox[{"WeierstrassPPrime", "[", 
+        RowBox[{
+         RowBox[{"x", "+", 
+          RowBox[{"I", " ", "y"}]}], ",", 
+         RowBox[{"WeierstrassInvariants", "[", 
+          RowBox[{"{", 
+           RowBox[{"Pi", ",", 
+            RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}]}], "]"}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "Pi"}], ",", "Pi", ",", "0.02"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "Pi"}], ",", "Pi", ",", "0.02"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"wyFunGrid", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"N", "[", 
+      RowBox[{"-", 
+       RowBox[{"Im", "[", 
+        RowBox[{"WeierstrassPPrime", "[", 
+         RowBox[{
+          RowBox[{"x", "+", 
+           RowBox[{"I", " ", "y"}]}], ",", 
+          RowBox[{"WeierstrassInvariants", "[", 
+           RowBox[{"{", 
+            RowBox[{"Pi", ",", 
+             RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}]}], "]"}], "]"}]}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "Pi"}], ",", "Pi", ",", "0.02"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "Pi"}], ",", "Pi", ",", "0.02"}], "}"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6755144743800488`*^9, 3.6755145489247723`*^9}, {
+  3.675515939190447*^9, 3.675515951724401*^9}}],
+
+Cell["Plot the functions", "Text",
+ CellChangeTimes->{{3.675514427906748*^9, 3.675514445353924*^9}, 
+   3.675517392448443*^9}],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ListContourPlot", "[", 
+     RowBox[{"wFunGrid", ",", 
+      RowBox[{"DataRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "2"}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"ListContourPlot", "[", 
+     RowBox[{"wxFunGrid", ",", 
+      RowBox[{"DataRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "2"}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"ListContourPlot", "[", 
+     RowBox[{"wyFunGrid", ",", 
+      RowBox[{"DataRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "}"}]}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "2"}], "}"}]}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.675514623709674*^9, 3.675514635389954*^9}, {
+  3.675514880036426*^9, 3.675514925578679*^9}, {3.675515026560609*^9, 
+  3.67551502703995*^9}, {3.6755150608403597`*^9, 3.675515067806396*^9}, {
+  3.6755151168015213`*^9, 3.6755151444418077`*^9}, {3.675515993167776*^9, 
+  3.6755159989826*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot3D", "[", 
+  RowBox[{"wFunGrid", ",", 
+   RowBox[{"DataRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], "}"}]}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "2"}], ",", "2"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.675515673519574*^9, 3.675515673836804*^9}, {
+  3.67551618881324*^9, 3.675516221134101*^9}}],
+
+Cell["Neumann data on the circle of radius 0.5", "Text",
+ CellChangeTimes->{{3.675517143337878*^9, 3.675517169553244*^9}, {
+  3.67552518732654*^9, 3.675525215335742*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"t", "=", 
+   RowBox[{"Array", "[", 
+    RowBox[{
+     RowBox[{"#", "&"}], ",", "65", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"t", ",", 
+     RowBox[{"-", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"wxVes", "=", 
+   RowBox[{"N", "[", 
+    RowBox[{"Re", "[", 
+     RowBox[{"WeierstrassPPrime", "[", 
+      RowBox[{
+       RowBox[{".5", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"I", " ", "t"}], "]"}]}], ",", 
+       RowBox[{"WeierstrassInvariants", "[", 
+        RowBox[{"{", 
+         RowBox[{"Pi", ",", 
+          RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}]}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"wyVes", "=", 
+   RowBox[{"N", "[", 
+    RowBox[{"-", 
+     RowBox[{"Im", "[", 
+      RowBox[{"WeierstrassPPrime", "[", 
+       RowBox[{
+        RowBox[{".5", 
+         RowBox[{"Exp", "[", 
+          RowBox[{"I", " ", "t"}], "]"}]}], ",", 
+        RowBox[{"WeierstrassInvariants", "[", 
+         RowBox[{"{", 
+          RowBox[{"Pi", ",", 
+           RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}]}], "]"}], "]"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dip", "=", 
+   RowBox[{"N", "[", 
+    RowBox[{"Re", "[", 
+     RowBox[{
+      RowBox[{"N", "[", 
+       RowBox[{"WeierstrassPPrime", "[", 
+        RowBox[{
+         RowBox[{".5", 
+          RowBox[{"Exp", "[", 
+           RowBox[{"I", " ", "t"}], "]"}]}], ",", 
+         RowBox[{"WeierstrassInvariants", "[", 
+          RowBox[{"{", 
+           RowBox[{"Pi", ",", 
+            RowBox[{"I", " ", "Pi"}]}], "}"}], "]"}]}], "]"}], "]"}], "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"I", " ", "t"}], "]"}]}], "]"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.675520609265997*^9, 3.675520609267929*^9}, {
+  3.675520661667468*^9, 3.675520678923267*^9}, {3.675520730350966*^9, 
+  3.675520770852275*^9}, {3.6755208078090267`*^9, 3.675520810487712*^9}, {
+  3.675521021352418*^9, 3.675521054584606*^9}, {3.675521089834818*^9, 
+  3.6755211050018187`*^9}, {3.675521145171377*^9, 3.675521246070361*^9}, {
+  3.6755214176101513`*^9, 3.675521578626319*^9}, {3.6755228296664248`*^9, 
+  3.6755229003816757`*^9}, {3.6755250671492653`*^9, 3.6755251412348337`*^9}, {
+  3.675525327214398*^9, 3.67552546149083*^9}, {3.6755256437842503`*^9, 
+  3.675525644967258*^9}}],
+
+Cell["Set exporting directory", "Text",
+ CellChangeTimes->{{3.675517143337878*^9, 3.675517169553244*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\</Users/boweiwu/Documents/MATLAB/elliptic functions\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Directory", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.675516566199321*^9, 3.675516567460454*^9}, 
+   3.675516616355587*^9, {3.6755166481054783`*^9, 3.675516648658539*^9}, {
+   3.6755166917962923`*^9, 3.675516699835024*^9}, {3.6755167616092663`*^9, 
+   3.675516763110038*^9}, 3.6755171260535088`*^9, {3.675517273190425*^9, 
+   3.6755172773979*^9}}],
+
+Cell[BoxData["\<\"/Users/boweiwu/Documents/MATLAB/elliptic functions\"\>"], \
+"Output",
+ CellChangeTimes->{3.675517277844192*^9}]
+}, Open  ]],
+
+Cell["Export the Weierstrass function values to .mat file", "Text",
+ CellChangeTimes->{{3.675517176538762*^9, 3.675517189777852*^9}, {
+  3.675517289030488*^9, 3.675517304749536*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<weierstrass.mat\>\"", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\"\<wFun\>\"", "\[Rule]", "wFunGrid"}], ",", " ", 
+      RowBox[{"\"\<wxFun\>\"", "\[Rule]", "wxFunGrid"}], ",", " ", 
+      RowBox[{"\"\<wyFun\>\"", "\[Rule]", " ", "wyFunGrid"}], ",", 
+      RowBox[{"\"\<h\>\"", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{"{", "0.02", "}"}], "}"}]}], ",", 
+      RowBox[{"\"\<dip\>\"", "\[Rule]", " ", 
+       RowBox[{"{", "dip", "}"}]}]}], "}"}], ",", " ", 
+    "\"\<LabeledData\>\""}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.675516834704142*^9, 3.6755169237133913`*^9}, {
+  3.6755171968990183`*^9, 3.675517217507214*^9}, {3.675522675645742*^9, 
+  3.6755226788748693`*^9}, {3.675523154886878*^9, 3.675523168109178*^9}, {
+  3.675525473430379*^9, 3.6755254846939993`*^9}}]
+},
+WindowSize->{808, 587},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 186, 4, 30, "Text"],
+Cell[CellGroupData[{
+Cell[769, 28, 373, 10, 28, "Input"],
+Cell[1145, 40, 324, 7, 35, "Output"]
+}, Open  ]],
+Cell[1484, 50, 383, 12, 32, "Text"],
+Cell[1870, 64, 1164, 29, 46, "Input"],
+Cell[3037, 95, 101, 1, 30, "Text"],
+Cell[3141, 98, 1574, 47, 80, "Input"],
+Cell[4718, 147, 126, 2, 30, "Text"],
+Cell[4847, 151, 1901, 54, 80, "Input"],
+Cell[6751, 207, 579, 17, 28, "Input"],
+Cell[7333, 226, 170, 2, 30, "Text"],
+Cell[7506, 230, 2493, 69, 97, "Input"],
+Cell[10002, 301, 105, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[10132, 306, 526, 11, 46, "Input"],
+Cell[10661, 319, 129, 2, 28, "Output"]
+}, Open  ]],
+Cell[10805, 324, 182, 2, 30, "Text"],
+Cell[10990, 328, 870, 18, 46, "Input"]
+}
+]
+*)
+
